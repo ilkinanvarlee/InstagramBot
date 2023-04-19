@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="container py-5">
+      {% if user.is_authenticated %}
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <p class="text-center"> {% if not user.is_anonymous %} Welcome {{ user }} {% endif %}</p>
+            <br>
+            <p class="text-center">Wait PLease...</p>
+            <br>
+            <p class="text-center">Your Instagram Followers: {{ datas.followers }} </p>
+            <p class="text-center">Your Instagram Following: {{ datas.following }} </p>
+            <br>
+            <p class="text-center"><a href="{% url 'user:logout' %}">Logout</a></p>
+            <br>
+      {% else %}
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <p class="text-center"> You do not have access here </p>
+            <p class="text-center"><a href="{% url 'user:dashboard' %}">Go Dashboard</a></p>
+    {% endif %}
+</div>
+
+{% endblock %}
